@@ -20,7 +20,6 @@ class Product{
     // create product
     function create(){
 
-            echo "createUser";
         //write query
         $query = "INSERT INTO
                     " .$this->table_name. "

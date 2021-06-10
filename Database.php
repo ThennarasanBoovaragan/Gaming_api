@@ -3,7 +3,7 @@
 class Database{
     
     private $host = "localhost";
-    private $db_name = "recinfot_8ballgameDB ";
+    private $db_name = "recinfot_8ballgamedb";
     private $username = "root";
     private $password = "root";
     private $port = "3307";
