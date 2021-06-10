@@ -1,6 +1,6 @@
 <?php
-include_once 'index.php';
-include_once 'Database.php';
+    //include_once 'index.php';
+    include_once 'Database.php';
     
     include_once 'Product.php'; 
 
@@ -27,41 +27,39 @@ $page_title = "Create Users";
          
          if($product->create()){
             
-             echo "<div class='alert alert-success'>User Was Created.</div>";
+             $message = "User Created";
          }
          else{
              
-             echo "<div class='alert alert-danger'>Unable to Create User.</div>";
+             $message =  "Unable to Create User";
          }        
 
-       }
 
-        
-        $file = "data.json";
+        $jwt =  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC93d3cub3hib3dnYW1pbmcuY29tIiwiYXVkIjoiaHR0cDpcL1wvd3d3Lm94Ym93Z2FtaW5nLmNvbSIsImlhdCI6MTM1Njk5OTUyNCwibmJmIjoxMzU3MDAwMDAwLCJkYXRhIjp7ImlkIjpudWxsLCJ1c2VybmFtZSI6IlNpdmFAMTIzNDU2IiwiZW1haWwiOiJTaXZhMTIzNDU2QGdtYWlsLmNvbSJ9fQ.O5hCDVEBXNTfhkDcc4eLMmTxN8_HOogyJLvtfOtTBD0";
+        $freemoney = "1000.00";
+        $wallet = "0.00";
+        $rpoint = "0.00";
         $arr_data = array();
         
         $formdata = array(           
+         'message'=>  $message,
+         'jwt'=>  $jwt,
+         'free_money' => $freemoney,
+         'wallet' => $wallet,
          'rNickname'=>  $_POST['rNickname'],
+         'rPoint'=> $rpoint,
          'rEmail'=>  $_POST['rEmail'],
-         'rPassword'=>  $_POST['rPassword'],
 	   );
 
         
         array_push($arr_data,$formdata);
         
-        $jsondata = json_encode($arr_data, JSON_PRETTY_PRINT);
-
+        $jsondata = json_encode($arr_data);
         
-        if(file_put_contents($file, $jsondata)) {
-	        echo 'Data successfully saved';
-	    }
-	   else {
-	        echo "error";
-
-        }
+        file_put_contents($file, $jsondata);
         
         //header('Content-Type: application/json');
-        echo json_encode($jsondata);
-
+        echo $jsondata;
+ }
 ?>
  

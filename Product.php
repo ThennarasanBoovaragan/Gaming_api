@@ -1,4 +1,4 @@
-  <?php
+<?php
 class Product{
     
     // database connection and table name
@@ -19,8 +19,8 @@ class Product{
 
     // create product
     function create(){
-        
-        echo "create:";
+
+            echo "createUser";
         //write query
         $query = "INSERT INTO
                     " .$this->table_name. "
@@ -51,8 +51,7 @@ class Product{
            // echo json_encode($error);
             return false;
         }
-        
-    }
+        }  
  }
 
 ?>
