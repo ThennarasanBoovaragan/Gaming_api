@@ -31,8 +31,8 @@ class Login{
         $this->rPassword=htmlspecialchars(strip_tags($this->rPassword));
   
         // bind values 
-        $stmt->bindParam(":rEmail", $this->rEmail);
-        $stmt->bindParam(":rPassword", $this->rPassword);
+        $stmt->bindParam(":email", $this->rEmail);
+        $stmt->bindParam(":password", $this->rPassword);
   
         if($stmt->execute()){
             return true;

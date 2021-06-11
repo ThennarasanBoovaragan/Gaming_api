@@ -39,8 +39,8 @@
          'jwt'=>  $jwt,
          'free_money' => $freemoney,
          'wallet' => $wallet,
-         'rPoint'=> $rPoint,
-         'rEmail'=>  $_POST['rEmail'],
+         'reward_points'=> $rPoint,
+         'email'=>  $_POST['rEmail'],
 	   );
 
         

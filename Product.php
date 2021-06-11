@@ -43,11 +43,8 @@ class Product{
 
     
         if (isset($results)) {
-           // echo json_encode($results);
             return true;
         } else {
-           // $error = array('error_message' => 'Sorry, Charlie');
-           // echo json_encode($error);
             return false;
         }
         }  
