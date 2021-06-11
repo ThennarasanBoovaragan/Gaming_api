@@ -1,5 +1,5 @@
   <?php
-class Login{
+class create_free_credit{
     
     // database connection and table name
     private $conn;
@@ -7,8 +7,8 @@ class Login{
   
     // object properties
     public $id;
-    public $rEmail;
-    public $rPassword;
+    public $updateFreeCredit;
+    public $rNickname;
 //   public $timestamp;
   
     public function __construct($db){
@@ -19,20 +19,20 @@ class Login{
     // create product
     function create(){
         //write query
-        $query = "SELECT * FROM
+        $query = "UPDATE updateFreeCredit FROM
                     ' . $this->$table_name . '
                 WHERE
-                     rEmail=:rEmail, rPassword=:rPassword";
+                     rNickname=:rNickname";
   
         $stmt = $this->conn->prepare($query);
   
         // posted values
-        $this->rEmail=htmlspecialchars(strip_tags($this->rEmail));
-        $this->rPassword=htmlspecialchars(strip_tags($this->rPassword));
+        $this->updateFreeCredit=htmlspecialchars(strip_tags($this->updateFreeCredit));
+        $this->rNickname=htmlspecialchars(strip_tags($this->rNickname));
   
         // bind values 
-        $stmt->bindParam(":email", $this->rEmail);
-        $stmt->bindParam(":password", $this->rPassword);
+        $stmt->bindParam(":updateFreeCredit", $this->updateFreeCredit);
+        $stmt->bindParam(":rNickname", $this->rNickname);
   
         if($stmt->execute()){
             return true;

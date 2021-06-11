@@ -1,5 +1,5 @@
   <?php
-class Login{
+class create_login{
     
     // database connection and table name
     private $conn;

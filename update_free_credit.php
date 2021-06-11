@@ -8,7 +8,7 @@
 
     $db = $database->getConnection();
     
-    $login = new Login($db);
+    $create_free_credit = new create_free_credit($db);
   
 ?>
 
@@ -16,9 +16,10 @@
 
  if($_POST){
          
-         $login->email=  $_POST['updatedFreeCredit'];
+         $create_free_credit->updateFreeCredit=  $_POST['updatedFreeCredit'];
+        $create_free_credit->rNickname=  $_POST['rNickname'];
          
-         if($login-> create()){
+         if($create_free_credit-> create()){
              
              $message = "Balance Updated Succesfully";
          }

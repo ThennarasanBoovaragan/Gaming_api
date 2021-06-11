@@ -8,7 +8,7 @@
 
     $db = $database->getConnection();
     
-    $login = new Login($db);
+    $create_login = new create_login($db);
   
 ?>
 
@@ -16,10 +16,10 @@
 
  if($_POST){
          
-         $login->email=  $_POST['email'];
-         $login->password=  $_POST['password'];
+         $create_login->email=  $_POST['email'];
+         $create_login->password=  $_POST['password'];
          
-         if($login-> create()){
+         if($create_login-> create()){
              
              $message = "Successful Login";
          }

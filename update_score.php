@@ -8,7 +8,7 @@
 
     $db = $database->getConnection();
     
-    $login = new Login($db);
+    $create_score = new create_score($db);
   
 ?>
 
@@ -16,10 +16,10 @@
 
  if($_POST){
          
-         $login->rNickname=  $_POST['rNickname'];
-         $login->amount=  $_POST['amount'];
+         $create_score->rNickname=  $_POST['rNickname'];
+         $create_score->amount=  $_POST['amount'];
          
-         if($login-> create()){
+         if($create_score-> create()){
              
              $message = "Record Updated succesfully";
          }

@@ -1,5 +1,5 @@
 <?php
-class Product{
+class create_register{
     
     // database connection and table name
     private $conn;

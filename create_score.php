@@ -1,5 +1,5 @@
   <?php
-class Login{
+class create_score{
     
     // database connection and table name
     private $conn;
@@ -7,9 +7,8 @@ class Login{
   
     // object properties
     public $id;
-    public $rEmail;
-    public $rPassword;
-//   public $timestamp;
+    public $amount;
+    public $rNickname;
   
     public function __construct($db){
         $this->conn = $db;
@@ -19,20 +18,20 @@ class Login{
     // create product
     function create(){
         //write query
-        $query = "SELECT * FROM
+        $query = "UPDATE amount FROM
                     ' . $this->$table_name . '
                 WHERE
-                     rEmail=:rEmail, rPassword=:rPassword";
+                     rNickname=:rNickname";
   
         $stmt = $this->conn->prepare($query);
   
         // posted values
-        $this->rEmail=htmlspecialchars(strip_tags($this->rEmail));
-        $this->rPassword=htmlspecialchars(strip_tags($this->rPassword));
+        $this->amount=htmlspecialchars(strip_tags($this->amount));
+        $this->rNickname=htmlspecialchars(strip_tags($this->rNickname));
   
         // bind values 
-        $stmt->bindParam(":email", $this->rEmail);
-        $stmt->bindParam(":password", $this->rPassword);
+        $stmt->bindParam(":amount", $this->amount);
+        $stmt->bindParam(":rNickname", $this->rNickname);
   
         if($stmt->execute()){
             return true;

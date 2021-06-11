@@ -2,30 +2,25 @@
     //include_once 'index.php';
     include_once 'Database.php';
     
-    include_once 'Product.php'; 
+    include_once 'create_register.php'; 
 
     $database = new Database();
 
     $db = $database->getConnection();
     
-    $product = new Product($db);
+    $create_register = new create_register($db);
 
-
-// set page headers
-$page_title = "Create Users";
-  
-  
 ?>
 
 <?php
 
  if($_POST){
          
-         $product->rNickname=  $_POST['rNickname'];
-         $product->rEmail=  $_POST['rEmail'];
-         $product->rPassword=  $_POST['rPassword'];
+         $create_register->rNickname=  $_POST['rNickname'];
+         $create_register->rEmail=  $_POST['rEmail'];
+         $create_register->rPassword=  $_POST['rPassword'];
          
-         if($product->create()){
+         if($create_register->create()){
             
              $message = "User Created";
          }
@@ -51,14 +46,10 @@ $page_title = "Create Users";
          'rEmail'=>  $_POST['rEmail'],
 	   );
 
-        
         array_push($arr_data,$formdata);
         
         $jsondata = json_encode($arr_data);
-        
-        file_put_contents($file, $jsondata);
-        
-        //header('Content-Type: application/json');
+
         echo $jsondata;
  }
 ?>
