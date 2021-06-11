@@ -16,10 +16,10 @@
 
  if($_POST){
          
-         $create_free_credit->updateFreeCredit=  $_POST['updatedFreeCredit'];
+        $create_free_credit->updateFreeCredit=  $_POST['updatedFreeCredit'];
         $create_free_credit->rNickname=  $_POST['rNickname'];
          
-         if($create_free_credit-> create()){
+         if($create_free_credit->create()){
              
              $message = "Balance Updated Succesfully";
          }

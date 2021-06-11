@@ -19,7 +19,7 @@
          $create_login->email=  $_POST['email'];
          $create_login->password=  $_POST['password'];
          
-         if($create_login-> create()){
+         if($create_login->create()){
              
              $message = "Successful Login";
          }

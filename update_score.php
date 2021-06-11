@@ -19,7 +19,7 @@
          $create_score->rNickname=  $_POST['rNickname'];
          $create_score->amount=  $_POST['amount'];
          
-         if($create_score-> create()){
+         if($create_score->create()){
              
              $message = "Record Updated succesfully";
          }

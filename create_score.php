@@ -18,8 +18,7 @@ class create_score{
     // create product
     function create(){
         //write query
-        $query = "UPDATE amount FROM
-                    ' . $this->$table_name . '
+        $query = "UPDATE ' . $this->$table_name . ' SET amount=' .$this->$amount. '
                 WHERE
                      rNickname=:rNickname";
   

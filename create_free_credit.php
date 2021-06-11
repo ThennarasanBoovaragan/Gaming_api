@@ -19,8 +19,7 @@ class create_free_credit{
     // create product
     function create(){
         //write query
-        $query = "UPDATE updateFreeCredit FROM
-                    ' . $this->$table_name . '
+        $query = "UPDATE ' . $this->$table_name . ' SET updateFreeCredit=' .$this->$updateFreeCredit. '
                 WHERE
                      rNickname=:rNickname";
   
