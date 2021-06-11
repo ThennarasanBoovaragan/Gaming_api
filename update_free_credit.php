@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 <?php
     include_once 'Database.php';
     
@@ -28,12 +28,12 @@
              $message = "Balance Update Failed";
          }
         
+        $arr_data = array();
         
         $formdata = array(           
         'message'=>  $message,
-        'UpdatedFreeCredit'=> $updatedFreeCredit,
-         
-	   );
+        'updatedFreeCredit'=> $_POST['updatedFreeCredit'],
+        );
 
         array_push($arr_data,$formdata);
         

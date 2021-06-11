@@ -1,4 +1,4 @@
-  <?php
+<?php
 class create_free_credit{
     
     // database connection and table name
@@ -9,7 +9,7 @@ class create_free_credit{
     public $id;
     public $updateFreeCredit;
     public $rNickname;
-//   public $timestamp;
+    public $amount;
   
     public function __construct($db){
         $this->conn = $db;
@@ -19,8 +19,7 @@ class create_free_credit{
     // create product
     function create(){
         //write query
-        $query = "UPDATE register SET updateFreeCredit=:updateFreeCredit
-                WHERE rNickname=:rNickname";
+        $query = "UPDATE register SET amount=:updateFreeCredit WHERE rNickname=:rNickname";
   
         $stmt = $this->conn->prepare($query);
   
@@ -29,7 +28,7 @@ class create_free_credit{
         $this->rNickname=htmlspecialchars(strip_tags($this->rNickname));
   
         // bind values 
-        $stmt->bindParam(":updateFreeCredit", $this->updateFreeCredit);
+        $stmt->bindParam(":amount", $this->updateFreeCredit);
         $stmt->bindParam(":rNickname", $this->rNickname);
   
         $stmt->execute();

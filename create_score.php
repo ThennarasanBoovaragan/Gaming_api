@@ -1,48 +1,44 @@
-  <?php
-class create_score{
+
+<?php
+    include_once 'Database.php';
     
-    // database connection and table name
-    private $conn;
-    private $table_name = "register";
-  
-    // object properties
-    public $id;
-    public $amount;
-    public $rNickname;
-  
-    public function __construct($db){
-        $this->conn = $db;
-    }
+    include_once 'create_score.php'; 
 
+    $database = new Database();
 
-    // create product
-    function create(){
+    $db = $database->getConnection();
+    
+    $create_score = new create_score($db);
+  
+?>
+
+<?php
+
+ if ($_POST){
+         
+         $create_score->Nickname =  $_POST['rNickname'];
+         $create_score->amount =  $_POST['amount'];
+         
+         if($create_score->create()){
+             
+             $message = "Record Updated succesfully";
+         }
+         else{
+             
+             $message = "Record Update Failed";
+         }
         
-        echo "Create_score called";
-        //write query
-        $query = "UPDATE register SET amount=:amount
-                WHERE rNickname=:rNickname";
-  
-        $stmt = $this->conn->prepare($query);
-  
-        // posted values
-        $this->amount=htmlspecialchars(strip_tags($this->amount));
-        $this->rNickname=htmlspecialchars(strip_tags($this->rNickname));
-  
-        // bind values 
-        $stmt->bindParam(":amount", $this->amount);
-        $stmt->bindParam(":rNickname", $this->rNickname);
-  
-        $stmt->execute();
-        $results = $stmt->fetchAll();
+        $arr_data = array();
+        
+        $formdata = array( 
+        'rNickname'=>  $_POST['rNickname'],    
+         'message'=>  $message,
+	   );
 
-    
-        if (isset($results)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
- }
+        array_push($arr_data,$formdata);
+        $jsondata = json_encode($arr_data);
+        echo $jsondata;  
+
+       }
 
 ?>

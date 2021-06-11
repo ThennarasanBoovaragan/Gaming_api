@@ -1,4 +1,4 @@
-  <?php
+<?php
 class create_login{
     
     // database connection and table name
@@ -6,10 +6,10 @@ class create_login{
     private $table_name = "register";
   
     // object properties
-    public $id;
-    public $rEmail;
+    public $rNickname;
     public $rPassword;
-//   public $timestamp;
+    public $rEmail;
+
   
     public function __construct($db){
         $this->conn = $db;
@@ -18,32 +18,48 @@ class create_login{
 
     // create product
     function create(){
+        
         //write query
         $query = "SELECT * FROM
-                    ' . $this->$table_name . '
+                    " .$this->table_name. "
                 WHERE
-                     rEmail=:rEmail, rPassword=:rPassword";
+                     rNickname=:rNickname,rPassword=:rPassword";
   
         $stmt = $this->conn->prepare($query);
-  
-        // posted values
-        $this->rEmail=htmlspecialchars(strip_tags($this->rEmail));
+        
+        $this->rNickname=htmlspecialchars(strip_tags($this->rNickname));
         $this->rPassword=htmlspecialchars(strip_tags($this->rPassword));
-  
-        // bind values 
-        $stmt->bindParam(":rEmail", $this->rEmail);
+        
+        $stmt->bindParam(":rNickname", $this->rNickname);
         $stmt->bindParam(":rPassword", $this->rPassword);
-  
-        $stmt->execute();
-        $results = $stmt->fetchAll();
-
     
-        if (isset($results)) {
+        $stmt->execute();
+        
+        $result = $stmt->fetchAll();
+
+        if (isset($result)) {
             return true;
         } else {
             return false;
         }
     }
+    
+    function getEmail(){
+        
+                $query = "SELECT rEmail FROM
+                    " .$this->table_name. "
+                WHERE
+                     rNickname=:rNickname";
+                $stmt = $this->conn->prepare($query); 
+                $stmt->bindParam(":rNickname", $this->rNickname);
+
+                $stmt->execute();
+                
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $this->rEmail = $row['rEmail'];
+                return $this->rEmail;
+    }
+    
  }
 
 ?>
