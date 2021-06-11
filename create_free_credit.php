@@ -19,9 +19,8 @@ class create_free_credit{
     // create product
     function create(){
         //write query
-        $query = "UPDATE ' . $this->$table_name . ' SET updateFreeCredit=' .$this->$updateFreeCredit. '
-                WHERE
-                     rNickname=:rNickname";
+        $query = "UPDATE register SET updateFreeCredit=:updateFreeCredit
+                WHERE rNickname=:rNickname";
   
         $stmt = $this->conn->prepare($query);
   
@@ -33,11 +32,15 @@ class create_free_credit{
         $stmt->bindParam(":updateFreeCredit", $this->updateFreeCredit);
         $stmt->bindParam(":rNickname", $this->rNickname);
   
-        if($stmt->execute()){
+        $stmt->execute();
+        $results = $stmt->fetchAll();
+
+    
+        if (isset($results)) {
             return true;
-        }else{
+        } else {
             return false;
-       }
+        }
     }
  }
 

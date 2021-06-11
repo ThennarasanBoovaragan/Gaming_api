@@ -17,10 +17,11 @@ class create_score{
 
     // create product
     function create(){
+        
+        echo "Create_score called";
         //write query
-        $query = "UPDATE ' . $this->$table_name . ' SET amount=' .$this->$amount. '
-                WHERE
-                     rNickname=:rNickname";
+        $query = "UPDATE register SET amount=:amount
+                WHERE rNickname=:rNickname";
   
         $stmt = $this->conn->prepare($query);
   
@@ -32,11 +33,15 @@ class create_score{
         $stmt->bindParam(":amount", $this->amount);
         $stmt->bindParam(":rNickname", $this->rNickname);
   
-        if($stmt->execute()){
+        $stmt->execute();
+        $results = $stmt->fetchAll();
+
+    
+        if (isset($results)) {
             return true;
-        }else{
+        } else {
             return false;
-       }
+        }
     }
  }
 

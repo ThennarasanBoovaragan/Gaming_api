@@ -34,11 +34,15 @@ class create_login{
         $stmt->bindParam(":rEmail", $this->rEmail);
         $stmt->bindParam(":rPassword", $this->rPassword);
   
-        if($stmt->execute()){
+        $stmt->execute();
+        $results = $stmt->fetchAll();
+
+    
+        if (isset($results)) {
             return true;
-        }else{
+        } else {
             return false;
-       }
+        }
     }
  }
 

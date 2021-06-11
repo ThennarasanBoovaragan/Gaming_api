@@ -14,7 +14,7 @@
 
 <?php
 
- if($_POST){
+ if (isset($_POST['submit'])){
          
          $create_score->rNickname=  $_POST['rNickname'];
          $create_score->amount=  $_POST['amount'];
@@ -42,3 +42,21 @@
        }
 
 ?>
+
+<br>
+   
+    <div class="container">
+        <div class="col-sm-6">
+           <h2 class="text-center">UPDATE</h2>
+            <form action="update_score.php" method="post">
+                <div class="form-group">
+                 <label for="amount">Amount</label> 
+                 <input type="text" name="amount" class="form-control">  
+                </div>
+                <div class="form-group">
+                 <label for="rNickname">Nickname</label> 
+                 <input type="text" name="amount" class="form-control">  
+                </div>
+                <input class="btn btn-primary" type ="submit"name ="submit" value="UPDATE">
+            </form>
+        </div>  
